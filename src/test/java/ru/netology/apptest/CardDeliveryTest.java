@@ -15,12 +15,12 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class CardDeliveryTest {
 
-    @BeforeAll
+ /*   @BeforeAll
     public static void setupBrowser() {
         System.setProperty("selenide.holdBrowserOpen", "true");
         System.setProperty("selenide.browser", "chrome");
         System.setProperty("selenide.headless", "false");
-    }
+    } */
 
     @BeforeEach
     void setupHost() {
