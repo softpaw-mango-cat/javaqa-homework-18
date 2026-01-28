@@ -173,6 +173,11 @@ public class CardDeliveryTest {
         $("[data-test-id='phone'] input").setValue(validPhone);
         $("[data-test-id='agreement'] .checkbox__box").click();
         $$("button").find((Condition.exactText("Запланировать"))).click();
+        // проверка первого планирования
+        String expectedTextFirst = "Встреча успешно запланирована на " + firstDate;
+        $("[data-test-id='success-notification'] .notification__content")
+                .should(Condition.appear)
+                .shouldHave(Condition.exactText(expectedTextFirst));
 
         // очищаем поля и отправляем повторно
         $("[data-test-id='city'] input")
@@ -194,10 +199,10 @@ public class CardDeliveryTest {
                 .should(Condition.appear);
         $$("button").find((Condition.exactText("Перепланировать"))).click();
 
-        // ожидаемый результат
-        String expectedText = "Встреча успешно запланирована на " + secondDate;
+        // проверка перепланирования встречи
+        String expectedTextSecond = "Встреча успешно запланирована на " + secondDate;
         $("[data-test-id='success-notification'] .notification__content")
                 .should(Condition.appear)
-                .shouldHave(Condition.exactText(expectedText));
+                .shouldHave(Condition.exactText(expectedTextSecond));
     }
 }
